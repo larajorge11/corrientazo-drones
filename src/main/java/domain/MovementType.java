@@ -3,7 +3,7 @@
  */
 package domain;
 
-public enum Movement {
+public enum MovementType {
     A,
     I,
     D

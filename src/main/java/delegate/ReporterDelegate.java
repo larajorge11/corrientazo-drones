@@ -32,7 +32,7 @@ public class ReporterDelegate {
                 printWriter.printf(POSITION_DRONE_REPORT,
                         geographicalPosition.getPosition().getPositionX(),
                         geographicalPosition.getPosition().getPositionY(),
-                        geographicalPosition.getCardinalDirection().getDescription());
+                        geographicalPosition.getCardinalDirectionType().getDescription());
             }
 
             printWriter.close();

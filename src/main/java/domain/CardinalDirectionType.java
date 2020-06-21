@@ -6,7 +6,7 @@ package domain;
 import lombok.Getter;
 
 @Getter
-public enum CardinalDirection {
+public enum CardinalDirectionType {
     N("Norte"),
     S("Sur"),
     W("Occidente"),
@@ -14,7 +14,7 @@ public enum CardinalDirection {
 
     private final String description;
 
-    CardinalDirection(String description) {
+    CardinalDirectionType(String description) {
         this.description = description;
     }
 }

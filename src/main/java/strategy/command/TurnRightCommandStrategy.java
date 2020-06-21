@@ -1,10 +1,7 @@
 package strategy.command;
 
-import domain.CardinalDirection;
+import domain.CardinalDirectionType;
 import domain.GeographicalPosition;
-import domain.Position;
-
-import static constants.CommonConstants.MOVE_FORWARD;
 
 public class TurnRightCommandStrategy implements CommandStrategy {
 
@@ -20,17 +17,17 @@ public class TurnRightCommandStrategy implements CommandStrategy {
      * @param geographicalPosition
      */
     private void turnRight(GeographicalPosition geographicalPosition) {
-        CardinalDirection newCardinalDirection = geographicalPosition.getCardinalDirection();
-        if (CardinalDirection.N == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.E;
-        } else if (CardinalDirection.E == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.S;
-        } else if (CardinalDirection.W == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.N;
-        } else if (CardinalDirection.S == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.W;
+        CardinalDirectionType newCardinalDirectionType = geographicalPosition.getCardinalDirectionType();
+        if (CardinalDirectionType.N == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.E;
+        } else if (CardinalDirectionType.E == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.S;
+        } else if (CardinalDirectionType.W == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.N;
+        } else if (CardinalDirectionType.S == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.W;
         }
 
-        geographicalPosition.setCardinalDirection(newCardinalDirection);
+        geographicalPosition.setCardinalDirectionType(newCardinalDirectionType);
     }
 }

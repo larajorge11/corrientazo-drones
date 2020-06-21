@@ -1,6 +1,6 @@
 package strategy.command;
 
-import domain.CardinalDirection;
+import domain.CardinalDirectionType;
 import domain.GeographicalPosition;
 
 public class TurnLeftCommandStrategy implements CommandStrategy {
@@ -17,17 +17,17 @@ public class TurnLeftCommandStrategy implements CommandStrategy {
      * @param geographicalPosition
      */
     private void turnLeft(GeographicalPosition geographicalPosition) {
-        CardinalDirection newCardinalDirection = geographicalPosition.getCardinalDirection();
-        if (CardinalDirection.N == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.W;
-        } else if (CardinalDirection.E == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.N;
-        } else if (CardinalDirection.W == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.S;
-        } else if (CardinalDirection.S == geographicalPosition.getCardinalDirection()) {
-            newCardinalDirection = CardinalDirection.E;
+        CardinalDirectionType newCardinalDirectionType = geographicalPosition.getCardinalDirectionType();
+        if (CardinalDirectionType.N == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.W;
+        } else if (CardinalDirectionType.E == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.N;
+        } else if (CardinalDirectionType.W == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.S;
+        } else if (CardinalDirectionType.S == geographicalPosition.getCardinalDirectionType()) {
+            newCardinalDirectionType = CardinalDirectionType.E;
         }
 
-        geographicalPosition.setCardinalDirection(newCardinalDirection);
+        geographicalPosition.setCardinalDirectionType(newCardinalDirectionType);
     }
 }

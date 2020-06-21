@@ -6,7 +6,7 @@ package delegate;
 import context.CommandPositionContext;
 import domain.Drone;
 import domain.GeographicalPosition;
-import domain.Movement;
+import domain.MovementType;
 import domain.Restaurant;
 import strategy.command.ForwardCommandStrategy;
 import strategy.command.TurnLeftCommandStrategy;
@@ -18,9 +18,9 @@ import java.util.function.Predicate;
 
 public class FlightDroneDelegate {
 
-    private final Predicate<String> FORWARD_COMMAND = command -> Movement.A.name().equals(command);
-    private final Predicate<String> RIGHT_COMMAND = command -> Movement.D.name().equals(command);
-    private final Predicate<String> LEFT_COMMAND = command -> Movement.I.name().equals(command);
+    private final Predicate<String> FORWARD_COMMAND = command -> MovementType.A.name().equals(command);
+    private final Predicate<String> RIGHT_COMMAND = command -> MovementType.D.name().equals(command);
+    private final Predicate<String> LEFT_COMMAND = command -> MovementType.I.name().equals(command);
 
     /**
      * @param restaurant
@@ -48,7 +48,7 @@ public class FlightDroneDelegate {
 
         }
         return GeographicalPosition.builder()
-                .cardinalDirection(drone.getGeographicalCurrentPosition().getCardinalDirection())
+                .cardinalDirectionType(drone.getGeographicalCurrentPosition().getCardinalDirectionType())
                 .position(drone.getGeographicalCurrentPosition().getPosition())
                 .build();
     }

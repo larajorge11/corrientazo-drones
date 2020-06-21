@@ -3,7 +3,7 @@
  */
 package transformer;
 
-import domain.Movement;
+import domain.MovementType;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,8 +17,8 @@ import static constants.CommonConstants.DELIVERY_DRONE_PATH;
 
 public class DroneFlightTransformer {
 
-    private final Predicate<Integer> IS_FORWARD_MOVEMENT = s -> Movement.A.name().equals(String.valueOf(Character.toChars(s)));
-    private final Predicate<Integer> IS_RIGHT_MOVEMENT = s -> Movement.D.name().equals(String.valueOf(Character.toChars(s)));
+    private final Predicate<Integer> IS_FORWARD_MOVEMENT = s -> MovementType.A.name().equals(String.valueOf(Character.toChars(s)));
+    private final Predicate<Integer> IS_RIGHT_MOVEMENT = s -> MovementType.D.name().equals(String.valueOf(Character.toChars(s)));
 
     public List<List<String>> moveFlightDrone(String droneFile) throws IOException {
         final List<String> lines = Files.readAllLines(Paths.get(DELIVERY_DRONE_PATH + droneFile));
@@ -38,11 +38,11 @@ public class DroneFlightTransformer {
     private String mapMovement(int charValue) {
         String listData;
         if (IS_FORWARD_MOVEMENT.test(charValue)) {
-            listData = Movement.A.name();
+            listData = MovementType.A.name();
         } else if (IS_RIGHT_MOVEMENT.test(charValue)) {
-            listData = Movement.D.name();
+            listData = MovementType.D.name();
         } else {
-            listData = Movement.I.name();
+            listData = MovementType.I.name();
         }
         return listData;
     }

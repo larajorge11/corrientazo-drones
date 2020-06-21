@@ -1,7 +1,7 @@
 package strategy.command;
 
 import context.MovementPositionContext;
-import domain.CardinalDirection;
+import domain.CardinalDirectionType;
 import domain.GeographicalPosition;
 import domain.Position;
 import strategy.movement.ForwardEastMovementStrategy;
@@ -14,16 +14,16 @@ import java.util.function.Predicate;
 public class ForwardCommandStrategy implements CommandStrategy {
 
     private final Predicate<GeographicalPosition> NORTH_DIRECTION = geographicalPosition ->
-            CardinalDirection.N == geographicalPosition.getCardinalDirection();
+            CardinalDirectionType.N == geographicalPosition.getCardinalDirectionType();
 
     private final Predicate<GeographicalPosition> EAST_DIRECTION = geographicalPosition ->
-            CardinalDirection.E == geographicalPosition.getCardinalDirection();
+            CardinalDirectionType.E == geographicalPosition.getCardinalDirectionType();
 
     private final Predicate<GeographicalPosition> WEST_DIRECTION = geographicalPosition ->
-            CardinalDirection.W == geographicalPosition.getCardinalDirection();
+            CardinalDirectionType.W == geographicalPosition.getCardinalDirectionType();
 
     private final Predicate<GeographicalPosition> SOUTH_DIRECTION = geographicalPosition ->
-            CardinalDirection.S == geographicalPosition.getCardinalDirection();
+            CardinalDirectionType.S == geographicalPosition.getCardinalDirectionType();
 
 
 

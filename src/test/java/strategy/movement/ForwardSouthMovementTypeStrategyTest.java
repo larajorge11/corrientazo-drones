@@ -7,23 +7,24 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class ForwardEastMovementStrategyTest {
-    private ForwardEastMovementStrategy forwardEastMovementStrategy;
+public class ForwardSouthMovementTypeStrategyTest {
+
+    private ForwardSouthMovementStrategy forwardSouthMovementStrategy;
 
     @Before
     public void setUp() {
-        forwardEastMovementStrategy = new ForwardEastMovementStrategy();
+        forwardSouthMovementStrategy = new ForwardSouthMovementStrategy();
     }
 
     @Test
-    public void testMovementTowardsEast() {
+    public void testMovementTowardsSouth() {
         Position position = buildPosition(0,0);
-        forwardEastMovementStrategy.setMovement(
+        forwardSouthMovementStrategy.setMovement(
                 position , 0, 0
         );
 
-        assertThat(position.getPositionX(), is(1));
-        assertThat(position.getPositionY(), is(0));
+        assertThat(position.getPositionX(), is(0));
+        assertThat(position.getPositionY(), is(-1));
     }
 
     private Position buildPosition(int x, int y) {

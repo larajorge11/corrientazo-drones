@@ -16,5 +16,5 @@ import lombok.Setter;
 @Builder
 public class GeographicalPosition {
     private Position position;
-    private CardinalDirection cardinalDirection;
+    private CardinalDirectionType cardinalDirectionType;
 }

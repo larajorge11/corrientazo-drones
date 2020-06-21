@@ -1,6 +1,6 @@
 package delegate;
 
-import domain.CardinalDirection;
+import domain.CardinalDirectionType;
 import domain.Restaurant;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class DroneProcessDeliveryDelegateTest {
         assertNull(restaurant.getDrones().get(0).getGeographicalPositionsDelivery());
         assertThat(restaurant.getDrones().get(0).getGeographicalCurrentPosition().getPosition().getPositionX(), is(0));
         assertThat(restaurant.getDrones().get(0).getGeographicalCurrentPosition().getPosition().getPositionY(), is(0));
-        assertThat(restaurant.getDrones().get(0).getGeographicalCurrentPosition().getCardinalDirection(), is(CardinalDirection.N));
+        assertThat(restaurant.getDrones().get(0).getGeographicalCurrentPosition().getCardinalDirectionType(), is(CardinalDirectionType.N));
         assertThat(restaurant.getDrones().get(0).getCommands().size(), is(3));
         assertThat(restaurant.getDrones().get(0).getCommands().get(0).size(), is(7));
         assertThat(restaurant.getDrones().get(0).getCommands().get(0).get(0), is("A"));

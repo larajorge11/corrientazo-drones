@@ -3,7 +3,7 @@
  */
 package builder;
 
-import domain.CardinalDirection;
+import domain.CardinalDirectionType;
 import domain.GeographicalPosition;
 import domain.Position;
 
@@ -11,7 +11,7 @@ public class GeographicalPositionBuilder {
 
     public GeographicalPosition startDronePosition() {
         return GeographicalPosition.builder()
-                .cardinalDirection(CardinalDirection.N)
+                .cardinalDirectionType(CardinalDirectionType.N)
                 .position(initialPosition())
                 .build();
     }
