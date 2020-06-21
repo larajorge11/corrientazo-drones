@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) 2020
+ */
 package util;
 
 import java.io.File;
@@ -11,6 +14,10 @@ public final class FileUtils {
         throw new IllegalAccessException("FileUtils cannot be instantiated");
     }
 
+    /**
+     * @param dir
+     * @return
+     */
     public static Set<String> listFiles(String dir) {
         return Stream.of(new File(dir).listFiles())
                 .map(File::getName)

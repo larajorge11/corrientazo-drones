@@ -4,20 +4,16 @@
 package domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
-public class Position {
-    /**
-     * Domain class for the position
-     */
-    private int positionX;
-    private int positionY;
+public class Restaurant {
+    private List<Drone> drones;
 }
