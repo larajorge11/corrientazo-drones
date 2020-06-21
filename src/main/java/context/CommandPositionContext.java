@@ -12,6 +12,6 @@ public class CommandPositionContext {
      * @param geographicalPosition
      */
     public void executeCommand(GeographicalPosition geographicalPosition) {
-        commandStrategy.setMovement(geographicalPosition);
+        commandStrategy.setCommand(geographicalPosition);
     }
 }

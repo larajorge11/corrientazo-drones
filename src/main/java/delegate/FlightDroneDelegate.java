@@ -8,9 +8,9 @@ import domain.Drone;
 import domain.GeographicalPosition;
 import domain.Movement;
 import domain.Restaurant;
-import strategy.command.ForwardStrategy;
-import strategy.command.TurnLeftStrategy;
-import strategy.command.TurnRightStrategy;
+import strategy.command.ForwardCommandStrategy;
+import strategy.command.TurnLeftCommandStrategy;
+import strategy.command.TurnRightCommandStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,15 +60,15 @@ public class FlightDroneDelegate {
     private void setPositionCommandStrategy(Drone drone, String command) {
         CommandPositionContext commandPositionContext = new CommandPositionContext();
         if (FORWARD_COMMAND.test(command)) {
-            commandPositionContext.setCommandStrategy(new ForwardStrategy());
+            commandPositionContext.setCommandStrategy(new ForwardCommandStrategy());
         }
 
         if (RIGHT_COMMAND.test(command)) {
-            commandPositionContext.setCommandStrategy(new TurnRightStrategy());
+            commandPositionContext.setCommandStrategy(new TurnRightCommandStrategy());
         }
 
         if (LEFT_COMMAND.test(command)) {
-            commandPositionContext.setCommandStrategy(new TurnLeftStrategy());
+            commandPositionContext.setCommandStrategy(new TurnLeftCommandStrategy());
         }
 
         commandPositionContext.executeCommand(drone.getGeographicalCurrentPosition());

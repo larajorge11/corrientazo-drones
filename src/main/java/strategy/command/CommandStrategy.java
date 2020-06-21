@@ -3,5 +3,5 @@ package strategy.command;
 import domain.GeographicalPosition;
 
 public interface CommandStrategy {
-    void setMovement(GeographicalPosition geographicalPosition);
+    void setCommand(GeographicalPosition geographicalPosition);
 }

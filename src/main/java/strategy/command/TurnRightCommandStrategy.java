@@ -6,13 +6,13 @@ import domain.Position;
 
 import static constants.CommonConstants.MOVE_FORWARD;
 
-public class TurnRightStrategy implements CommandStrategy {
+public class TurnRightCommandStrategy implements CommandStrategy {
 
     /**
      * @param geographicalPosition
      */
     @Override
-    public void setMovement(GeographicalPosition geographicalPosition) {
+    public void setCommand(GeographicalPosition geographicalPosition) {
         turnRight(geographicalPosition);
     }
 
