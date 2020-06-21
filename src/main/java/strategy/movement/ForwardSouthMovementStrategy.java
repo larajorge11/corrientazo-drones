@@ -6,6 +6,11 @@ import static constants.CommonConstants.MOVE_FORWARD;
 
 public class ForwardSouthMovementStrategy implements MovementForwardStrategy {
 
+    /**
+     * @param newPosition
+     * @param currentXPosition
+     * @param currentYPosition
+     */
     @Override
     public void setMovement(Position newPosition, int currentXPosition, int currentYPosition) {
         newPosition.setPositionX(currentXPosition);
