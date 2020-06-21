@@ -17,7 +17,7 @@ public class ForwardSouthMovementStrategyTest {
     }
 
     @Test
-    public void testMovementTowardsNorth() {
+    public void testMovementTowardsSouth() {
         Position position = buildPosition(0,0);
         forwardSouthMovementStrategy.setMovement(
                 position , 0, 0
