@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static constants.CommonConstants.DISTANCE_PERIMETER_MAX;
+import static org.apache.commons.lang3.StringUtils.countMatches;
 import static util.FileUtils.readLinesFile;
 
 public class DroneFlightTransformer {
@@ -19,12 +21,18 @@ public class DroneFlightTransformer {
     private final Predicate<Integer> IS_RIGHT_MOVEMENT = s -> MovementType.D.name().equals(String.valueOf(Character.toChars(s)));
 
     public List<List<String>> moveFlightDrone(String droneFile) throws IOException {
-        final List<String> lines = readLinesFile(droneFile);
         List<List<String>> deliveries = new ArrayList<>();
-        for (String lineFile : lines) {
-            getListDeliveriesDrone(deliveries, lineFile);
+        final List<String> lines = readLinesFile(droneFile);
+        if (!isAnyDeliveryOutsidePerimeter(lines)) {
+            for (String lineFile : lines) {
+                getListDeliveriesDrone(deliveries, lineFile);
+            }
         }
         return deliveries;
+    }
+
+    private boolean isAnyDeliveryOutsidePerimeter(List<String> lines) {
+        return lines.stream().anyMatch(s -> countMatches(s, MovementType.A.name()) > DISTANCE_PERIMETER_MAX);
     }
 
     private void getListDeliveriesDrone(List<List<String>> deliveries, String lineFile) {

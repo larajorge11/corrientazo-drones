@@ -18,6 +18,7 @@ public final class CommonConstants {
     public static int MOVE_FORWARD = 1;
     public static int DRONES_AMOUNT_MAX = 20;
     public static int DRONES_DELIVERY_AMOUNT_MAX = 3;
+    public static int DISTANCE_PERIMETER_MAX = 10;
     public static String OK_MESSAGE = "ok";
     public static String EXCEED_AMOUNT_DRONES_MESSAGE = "Sorry!, Drones amount not allowed";
 }

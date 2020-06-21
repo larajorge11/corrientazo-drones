@@ -7,6 +7,7 @@ import builder.GeographicalPositionBuilder;
 import delegate.definition.Delegate;
 import domain.Drone;
 import domain.Restaurant;
+import org.apache.commons.collections4.CollectionUtils;
 import transformer.DroneFlightTransformer;
 
 import java.io.IOException;
@@ -55,12 +56,15 @@ public class DroneProcessDeliveryDelegate implements Delegate<String, Restaurant
         DroneFlightTransformer droneFlightTransformer = new DroneFlightTransformer();
         for (String droneDelivery : dronesDeliveryList) {
             if (readLinesFile(droneDelivery).size() <= DRONES_DELIVERY_AMOUNT_MAX) {
-                drones.add(
-                        Drone.builder()
-                                .identification(cleanValueString(droneDelivery))
-                                .geographicalCurrentPosition(positionDelegate.startDronePosition())
-                                .commands(droneFlightTransformer.moveFlightDrone(droneDelivery))
-                                .build());
+                List<List<String>> commandList = droneFlightTransformer.moveFlightDrone(droneDelivery);
+                if (CollectionUtils.isNotEmpty(commandList)) {
+                    drones.add(
+                            Drone.builder()
+                                    .identification(cleanValueString(droneDelivery))
+                                    .geographicalCurrentPosition(positionDelegate.startDronePosition())
+                                    .commands(commandList)
+                                    .build());
+                }
             }
         }
     }

@@ -27,7 +27,7 @@ public class DroneProcessDeliveryDelegateTest {
     public void testValidateProcess() throws IOException {
         Restaurant restaurant = droneProcessDeliveryDelegate.process(DELIVERY_DRONE_PATH);
 
-        assertThat(restaurant.getDrones().size(), is(3));
+        assertThat(restaurant.getDrones().size(), is(5));
         assertThat(restaurant.getDrones().get(0).getIdentification(), is("02"));
         assertNotNull(restaurant.getDrones().get(0).getGeographicalCurrentPosition());
         assertNotNull(restaurant.getDrones().get(0).getCommands());
@@ -57,6 +57,6 @@ public class DroneProcessDeliveryDelegateTest {
     @Test
     public void testValidateDeliveryAmountMaximum() throws IOException {
         Restaurant restaurant = droneProcessDeliveryDelegate.process(DELIVERY_DRONE_PATH);
-        assertThat(restaurant.getDrones().size(), is(3));
+        assertThat(restaurant.getDrones().size(), is(5));
     }
 }
