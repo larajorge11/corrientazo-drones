@@ -16,4 +16,6 @@ import java.util.List;
 @Setter
 public class Restaurant {
     private List<Drone> drones;
+    private String status_message;
+    private boolean status;
 }

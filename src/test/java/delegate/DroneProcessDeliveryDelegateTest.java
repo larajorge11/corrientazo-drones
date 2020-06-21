@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static constants.CommonConstants.DELIVERY_DRONE_PATH;
+import static constants.Constants.DELIVERY_DRONE_AMOUNT_MAXIMUM_PATH;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -44,5 +45,12 @@ public class DroneProcessDeliveryDelegateTest {
         assertThat(restaurant.getDrones().get(0).getCommands().get(0).get(5), is("A"));
         assertThat(restaurant.getDrones().get(0).getCommands().get(0).get(6), is("A"));
 
+    }
+
+    @Test
+    public void testValidateAmountDronesMaximum() throws IOException {
+        Restaurant restaurant = droneProcessDeliveryDelegate.process(DELIVERY_DRONE_AMOUNT_MAXIMUM_PATH);
+        assertNull(restaurant.getDrones());
+        assertThat(restaurant.isStatus(), is(false));
     }
 }

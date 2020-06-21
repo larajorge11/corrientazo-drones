@@ -12,8 +12,12 @@ import transformer.DroneFlightTransformer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
+import static constants.CommonConstants.DRONES_AMOUNT_MAX;
+import static constants.CommonConstants.EXCEED_AMOUNT_DRONES_MESSAGE;
+import static constants.CommonConstants.OK_MESSAGE;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 import static util.FileUtils.listFiles;
 import static util.StringUtils.cleanValueString;
@@ -27,12 +31,17 @@ public class DroneProcessDeliveryDelegate implements Delegate<String, Restaurant
      */
     @Override
     public Restaurant process(String deliveryDronePath) throws IOException {
+        Restaurant restaurant;
         List<Drone> drones = new ArrayList<>();
         final Set<String> dronesDeliveryList = listFiles(deliveryDronePath);
-        if (isNotEmpty(dronesDeliveryList)) {
+        if (isNotEmpty(dronesDeliveryList) && dronesDeliveryList.size() <= DRONES_AMOUNT_MAX) {
             buildWorkerDroneList(drones, dronesDeliveryList);
+            restaurant = new Restaurant(drones, OK_MESSAGE, true);
+        } else {
+            restaurant = new Restaurant(null, EXCEED_AMOUNT_DRONES_MESSAGE, false);
         }
-        return new Restaurant(drones);
+
+        return restaurant;
     }
 
     /**

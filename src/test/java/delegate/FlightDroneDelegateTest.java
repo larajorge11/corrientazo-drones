@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+
+import static constants.CommonConstants.OK_MESSAGE;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -34,7 +36,7 @@ public class FlightDroneDelegateTest {
         List<Drone> drones = new ArrayList<>();
         drones.add(buildDrone("01", 0,0, CardinalDirectionType.N, new ArrayList<>(Arrays.asList("AAAAIAA", "DDDAIAD", "AAIADAD"))));
 
-        Restaurant corrientazoRestaurant = new Restaurant(drones);
+        Restaurant corrientazoRestaurant = new Restaurant(drones, OK_MESSAGE, true);
 
         flightDroneDelegate.moveDrone(corrientazoRestaurant);
         assertThat(corrientazoRestaurant.getDrones().size(), is(1));

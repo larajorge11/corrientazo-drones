@@ -16,4 +16,7 @@ public final class CommonConstants {
     public static String TITLE_DRONES_REPORT = "== Reporte de entregas ==\n\n";
     public static String POSITION_DRONE_REPORT = "(%d, %d) dirección %s\n\n";
     public static int MOVE_FORWARD = 1;
+    public static int DRONES_AMOUNT_MAX = 20;
+    public static String OK_MESSAGE = "ok";
+    public static String EXCEED_AMOUNT_DRONES_MESSAGE = "Sorry!, Drones amount not allowed";
 }
