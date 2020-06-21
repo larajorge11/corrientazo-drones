@@ -12,14 +12,15 @@ import transformer.DroneFlightTransformer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import static constants.CommonConstants.DRONES_AMOUNT_MAX;
+import static constants.CommonConstants.DRONES_DELIVERY_AMOUNT_MAX;
 import static constants.CommonConstants.EXCEED_AMOUNT_DRONES_MESSAGE;
 import static constants.CommonConstants.OK_MESSAGE;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 import static util.FileUtils.listFiles;
+import static util.FileUtils.readLinesFile;
 import static util.StringUtils.cleanValueString;
 
 public class DroneProcessDeliveryDelegate implements Delegate<String, Restaurant> {
@@ -53,12 +54,14 @@ public class DroneProcessDeliveryDelegate implements Delegate<String, Restaurant
         GeographicalPositionBuilder positionDelegate = new GeographicalPositionBuilder();
         DroneFlightTransformer droneFlightTransformer = new DroneFlightTransformer();
         for (String droneDelivery : dronesDeliveryList) {
-            drones.add(
-                    Drone.builder()
-                    .identification(cleanValueString(droneDelivery))
-                    .geographicalCurrentPosition(positionDelegate.startDronePosition())
-                    .commands(droneFlightTransformer.moveFlightDrone(droneDelivery))
-                    .build());
+            if (readLinesFile(droneDelivery).size() <= DRONES_DELIVERY_AMOUNT_MAX) {
+                drones.add(
+                        Drone.builder()
+                                .identification(cleanValueString(droneDelivery))
+                                .geographicalCurrentPosition(positionDelegate.startDronePosition())
+                                .commands(droneFlightTransformer.moveFlightDrone(droneDelivery))
+                                .build());
+            }
         }
     }
 }

@@ -6,14 +6,12 @@ package transformer;
 import domain.MovementType;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static constants.CommonConstants.DELIVERY_DRONE_PATH;
+import static util.FileUtils.readLinesFile;
 
 public class DroneFlightTransformer {
 
@@ -21,7 +19,7 @@ public class DroneFlightTransformer {
     private final Predicate<Integer> IS_RIGHT_MOVEMENT = s -> MovementType.D.name().equals(String.valueOf(Character.toChars(s)));
 
     public List<List<String>> moveFlightDrone(String droneFile) throws IOException {
-        final List<String> lines = Files.readAllLines(Paths.get(DELIVERY_DRONE_PATH + droneFile));
+        final List<String> lines = readLinesFile(droneFile);
         List<List<String>> deliveries = new ArrayList<>();
         for (String lineFile : lines) {
             getListDeliveriesDrone(deliveries, lineFile);
